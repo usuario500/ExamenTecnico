@@ -1,4 +1,5 @@
 create database CargaMaterias;
+/*drop database CargaMaterias;*/
 use CargaMaterias;
 
 create table Alumnos(
@@ -7,13 +8,16 @@ create table Alumnos(
     apellidos nvarchar (100) not null,
     carrera nvarchar (100) not null,
     correo nvarchar (100) not null,
-    telefono nvarchar(10) not null
+    telefono nvarchar(10) not null,
+    activo int not null
 );
 
 create table Materias(
 	id int not null AUTO_INCREMENT,
     nombre nvarchar (50) not null,
+    dias nvarchar (50) not null,
     credito int not null,
+    activo int not null,
     primary key (id)
 );
 
@@ -31,6 +35,6 @@ alter table cargas add constraint FK_materias foreign key (id_materia) reference
 
 alter table cargas add primary key (NC, id_materia);
 
-INSERT INTO alumnos (NC, nombres, apellidos, carrera, correo, telefono) VALUES
-    (16171421, 'jose', 'jostar', 'gestion', 'jojo@gmail.com', '6671550505');
+INSERT INTO alumnos (NC, nombres, apellidos, carrera, correo, telefono, activo) VALUES
+    (16171419, 'jose', 'jostar', 'gestion', 'jojo@gmail.com', '6671550505', 1);
 

@@ -1,6 +1,7 @@
 package com.example.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import lombok.Data;
 
@@ -17,8 +18,10 @@ public class Materia implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  id;
     
+    @NotEmpty
+    private String nombre, dias; 
     
-    private String nombre; 
-    private int creditos;
+    @NotEmpty
+    private int creditos, activo;
     
 }

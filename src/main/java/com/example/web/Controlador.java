@@ -40,6 +40,23 @@ public class Controlador {
         return "alta";
     }
     
+    @GetMapping("/showModificar/{NC}")
+    public String modificar(Alumno alumno, Model model) {
+        log.info("aeeeeeeeee");
+        alumno = modelo.AlumnoF(alumno);
+        model.addAttribute("alumno", alumno);
+        return "alta";
+    }
+    
+    @GetMapping("/eliminar/{NC}")
+    public String eliminar(Alumno alumno) {
+        log.info("juejuejue");
+        alumno = modelo.AlumnoF(alumno);
+        alumno.setActivo(0);
+        modelo.GuardarAlumno(alumno);
+        return "redirect:/";
+    }
+    
     @PostMapping("/guardar")
     public String GuardarAlumno(Alumno alumno) {
         modelo.GuardarAlumno(alumno);

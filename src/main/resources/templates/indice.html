@@ -18,14 +18,18 @@
                     <th>NC</th>
                     <th>Telefono</th>
                     <th>Correo</th>
+                    <th>Acciones</th>
                 </tr>
-                <tr th:each="alumno : ${alumnos}">
+                <tr th:each="alumno : ${alumnos}" th:if="${alumno.activo == 1}" >
                     <td th:text= ${alumno.nombres}></td>
                     <td th:text= ${alumno.apellidos}></td>
                     <td th:text= ${alumno.carrera}></td>
                     <td th:text= ${alumno.NC}></td>
                     <td th:text= ${alumno.telefono}></td>
                     <td th:text= ${alumno.correo}></td>
+                    <td > <a th:href="@{/showModificar/} + ${alumno.NC}" ><button th:text="Modificar" ></button></a></td>
+                    <td > <a th:href="@{/showModificar/} + ${alumno.NC}" ><button th:text="Cargar" ></button></a></td>
+                    <td > <a th:href="@{/eliminar/} + ${alumno.NC}" ><button th:text="Eliminar" ></button></a></td>
                 </tr>
             </table>
         </div>
