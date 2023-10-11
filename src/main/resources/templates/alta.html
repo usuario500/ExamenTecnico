@@ -8,5 +8,33 @@
     <body>
         <h1>Datos del alumno</h1>
         <a th:href="@{/}">Inicio</a>
+        <br/>
+        <form th:action="@{/guardar}" method="post" th:object="${alumno}">
+            <label for="NC">Numero de Control: </label>
+            <input type="text" name="NC" th:field="*{NC}"/>
+            <br/>
+            
+            <label for="nombres">Nombre(s): </label>
+            <input type="text" name="nombre" th:field="*{nombres}"/>
+            <br/>
+            
+            <label for="apellidos">Apellido(s): </label>
+            <input type="text" name="apellidos" th:field="*{apellidos}"/>
+            <br/>
+            
+            <label for="carrera">Carrera: </label>
+            <input type="text" name="carrera" th:field="*{carrera}"/>
+            <br/>
+            
+            <label for="correo">Correo: </label>
+            <input type="text" name="correo" th:field="*{correo}"/>
+            <br/>
+            
+            <label for="telefono">Telefono: </label>
+            <input type="text" name="telefono" th:field="*{telefono}" required oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="10"/>
+            <br/>
+            
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
     </body>
 </html>

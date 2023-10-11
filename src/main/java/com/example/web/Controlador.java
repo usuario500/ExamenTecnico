@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -34,11 +35,17 @@ public class Controlador {
         return "indice";
     }
     
-    @GetMapping("/alta")
+    @GetMapping("/showAlta")
     public String alta(Alumno alumno) {
-
         return "alta";
     }
+    
+    @PostMapping("/guardar")
+    public String GuardarAlumno(Alumno alumno) {
+        modelo.GuardarAlumno(alumno);
+        return "redirect:/";
+    }
+    
     
     @ExceptionHandler(Exception.class)
     public ModelAndView handleException(Exception e) {
