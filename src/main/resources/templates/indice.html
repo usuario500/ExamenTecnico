@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Carga de materias</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Inicio</h1>
+        <a th:href="@{alta}">Alta de alumnos</a>
+        <br/>
+        <div th:if="${alumnos != null and !alumnos.empty}">
+            <table border="2">
+                <tr>
+                    <th>Nombre(s)</th>
+                    <th>Apellido(s)</th>
+                    <th>Carrera</th>
+                    <th>NC</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                </tr>
+                <tr th:each="alumno : ${alumnos}">
+                    <td th:text= ${alumno.nombres}></td>
+                    <td th:text= ${alumno.apellidos}></td>
+                    <td th:text= ${alumno.carrera}></td>
+                    <td th:text= ${alumno.NC}></td>
+                    <td th:text= ${alumno.telefono}></td>
+                    <td th:text= ${alumno.correo}></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${alumnos == null or alumnos.empty}">
+            El alumno no tiene materias cargadas
+        </div>
+    </body>
+</html>
