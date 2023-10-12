@@ -21,7 +21,6 @@ public class Materia implements Serializable{
     @NotEmpty
     private String nombre, dias; 
     
-    @NotEmpty
-    private int creditos, activo;
+    private int credito, activo;
     
 }

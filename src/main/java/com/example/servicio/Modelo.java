@@ -40,12 +40,6 @@ public class Modelo implements AlumnoServicios, MateriaServicios{
     }
 
     @Override
-    @Transactional
-    public void EliminarAlumno(Alumno alumno) {
-        alumnoDao.delete(alumno);
-    }
-
-    @Override
     @Transactional(readOnly = true)
     public Alumno AlumnoF(Alumno alumno) {
         return alumnoDao.findById(alumno.getNC()).orElse(null);
@@ -60,17 +54,12 @@ public class Modelo implements AlumnoServicios, MateriaServicios{
 
     @Override
     public void GuardarMateria(Materia materia) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void EliminarMateria(Materia materia) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         materiaDao.save(materia);
     }
 
     @Override
     public Materia MateriaF(Materia materia) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return materiaDao.findById(materia.getId()).orElse(null);
     }
     
     

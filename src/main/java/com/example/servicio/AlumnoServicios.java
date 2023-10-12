@@ -9,8 +9,6 @@ public interface AlumnoServicios {
     
     public void GuardarAlumno(Alumno alumno);
     
-    public void EliminarAlumno(Alumno alumno);
-    
     public Alumno AlumnoF(Alumno alumno);
     
 }

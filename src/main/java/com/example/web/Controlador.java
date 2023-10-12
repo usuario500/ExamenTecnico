@@ -2,6 +2,7 @@ package com.example.web;
 
 //import com.example.domain.Alumno;
 import com.example.domain.Alumno;
+import com.example.domain.Materia;
 import com.example.servicio.Modelo;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -27,14 +28,16 @@ public class Controlador {
     public String comienso(Model model) {
 
         List<Alumno> alumnos = modelo.ObtenerAlumnos();
-        
+        List<Materia> materias = modelo.ObtenerMaterias();
         
         log.info("Se esta ejecutando el proyecto con modelo");
         model.addAttribute("alumnos", alumnos);
+        model.addAttribute("materias", materias);
 
         return "indice";
     }
     
+    //Metodos para Alumno
     @GetMapping("/showAlta")
     public String alta(Alumno alumno) {
         return "alta";
@@ -63,7 +66,37 @@ public class Controlador {
         return "redirect:/";
     }
     
+    //Metodos para materias
+    @GetMapping("/showMateria")
+    public String añadirMateria(Materia materia) {
+        return "materia";
+    }
     
+    @GetMapping("/showModificarMateria/{id}")
+    public String modificarMateria(Materia materia, Model model) {
+        log.info("aeeeeeeeee");
+        materia = modelo.MateriaF(materia);
+        model.addAttribute("materia", materia);
+        return "materia";
+    }
+    
+    @GetMapping("/eliminarMateria/{id}")
+    public String eliminarMateria(Materia materia) {
+        log.info("juejuejue");
+        materia = modelo.MateriaF(materia);
+        materia.setActivo(0);
+        modelo.GuardarMateria(materia);
+        return "redirect:/";
+    }
+    
+    @PostMapping("/guardarMateria")
+    public String GuardarMateria(Materia materia) {
+        materia.setActivo(1);
+        modelo.GuardarMateria(materia);
+        return "redirect:/";
+    }
+    
+    //error
     @ExceptionHandler(Exception.class)
     public ModelAndView handleException(Exception e) {
         ModelAndView modelAndView = new ModelAndView("error");

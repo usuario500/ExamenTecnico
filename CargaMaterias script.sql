@@ -37,4 +37,7 @@ alter table cargas add primary key (NC, id_materia);
 
 INSERT INTO alumnos (NC, nombres, apellidos, carrera, correo, telefono, activo) VALUES
     (16171419, 'jose', 'jostar', 'gestion', 'jojo@gmail.com', '6671550505', 1);
+    
+INSERT INTO materias (nombre, dias, credito, activo) VALUES
+    ("Calculo", 'Lun - Juev', 30, 1);
 

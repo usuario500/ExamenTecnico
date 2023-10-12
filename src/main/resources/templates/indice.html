@@ -36,5 +36,29 @@
         <div th:if="${alumnos == null or alumnos.empty}">
             El alumno no tiene materias cargadas
         </div>
+        <br/>
+        
+        
+        <a th:href="@{showMateria}">Alta de materias</a>
+        <div th:if="${materias != null and !materias.empty}">
+            <table border="2">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Dias</th>
+                    <th>Credito</th>
+                    <th>Acciones</th>
+                </tr>
+                <tr th:each="materia : ${materias}" th:if="${materia.activo == 1}" >
+                    <td th:text= ${materia.nombre}></td>
+                    <td th:text= ${materia.dias}></td>
+                    <td th:text= ${materia.credito}></td>
+                    <td > <a th:href="@{/showModificarMateria/} + ${materia.id}" ><button th:text="Modificar" ></button></a></td>
+                    <td > <a th:href="@{/eliminarMateria/} + ${materia.id}" ><button th:text="Eliminar" ></button></a></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${materias == null or materias.empty}">
+            No hay materias
+        </div>
     </body>
 </html>
