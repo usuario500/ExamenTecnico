@@ -2,6 +2,7 @@ package com.example.web;
 
 //import com.example.domain.Alumno;
 import com.example.domain.Alumno;
+import com.example.domain.Carga;
 import com.example.domain.Materia;
 import com.example.servicio.Modelo;
 import java.util.List;
@@ -95,6 +96,33 @@ public class Controlador {
         modelo.GuardarMateria(materia);
         return "redirect:/";
     }
+    
+    //Metodos para Carga
+    
+    @GetMapping("/showCarga/{NC}")
+    public String MostrarCarga(Alumno alumno, Model model) {
+
+        List<Carga> cargas = modelo.ObtenerCarga(alumno);
+        
+        log.info("Se intensa obtener la carga");
+        log.info("Contenido de miObjeto: {}", cargas);
+        model.addAttribute("cargas", cargas);
+
+        return "carga";
+    }
+    
+    @GetMapping("/showCargar/{NC}")
+    public String ObtenerMateriasCarga(Alumno alumno, Model model) {
+
+        List<Materia> materias = modelo.ObtenerMateriasCarga(alumno);
+        
+        log.info("Se intensa obtener la carga");
+        log.info("Contenido de miObjeto: {}", materias);
+        model.addAttribute("materias", materias);
+
+        return "cargar";
+    }
+    
     
     //error
     @ExceptionHandler(Exception.class)

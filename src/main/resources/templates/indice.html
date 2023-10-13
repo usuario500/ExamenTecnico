@@ -27,18 +27,22 @@
                     <td th:text= ${alumno.NC}></td>
                     <td th:text= ${alumno.telefono}></td>
                     <td th:text= ${alumno.correo}></td>
-                    <td > <a th:href="@{/showModificar/} + ${alumno.NC}" ><button th:text="Modificar" ></button></a></td>
-                    <td > <a th:href="@{/showModificar/} + ${alumno.NC}" ><button th:text="Cargar" ></button></a></td>
-                    <td > <a th:href="@{/eliminar/} + ${alumno.NC}" ><button th:text="Eliminar" ></button></a></td>
+                    <td > 
+                        <a th:href="@{/showModificar/} + ${alumno.NC}" ><button th:text="Modificar" ></button></a>
+                        <a th:href="@{/showCargar/} + ${alumno.NC}" ><button th:text="Cargar" ></button></a>
+                        <br/>
+                        <a th:href="@{/eliminar/} + ${alumno.NC}" ><button th:text="Eliminar" ></button></a>
+                        <a th:href="@{/showCarga/} + ${alumno.NC}" ><button th:text="Carga" ></button></a>
+                    </td>
                 </tr>
             </table>
         </div>
         <div th:if="${alumnos == null or alumnos.empty}">
-            El alumno no tiene materias cargadas
+            No hay alumnos
         </div>
         <br/>
-        
-        
+
+
         <a th:href="@{showMateria}">Alta de materias</a>
         <div th:if="${materias != null and !materias.empty}">
             <table border="2">
@@ -52,8 +56,10 @@
                     <td th:text= ${materia.nombre}></td>
                     <td th:text= ${materia.dias}></td>
                     <td th:text= ${materia.credito}></td>
-                    <td > <a th:href="@{/showModificarMateria/} + ${materia.id}" ><button th:text="Modificar" ></button></a></td>
-                    <td > <a th:href="@{/eliminarMateria/} + ${materia.id}" ><button th:text="Eliminar" ></button></a></td>
+                    <td >
+                        <a th:href="@{/showModificarMateria/} + ${materia.id}" ><button th:text="Modificar" ></button></a>
+                        <a th:href="@{/eliminarMateria/} + ${materia.id}" ><button th:text="Eliminar" ></button></a>
+                    </td>
                 </tr>
             </table>
         </div>

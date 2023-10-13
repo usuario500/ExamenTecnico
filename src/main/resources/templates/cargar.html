@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Carga</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div th:if="${materias != null and !materias.empty}">
+            <table border="2">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Dias</th>
+                    <th>Credito</th>
+                </tr>
+                <tr th:each="materia : ${materias}" th:if="${materia.activo == 1}" >
+                    <td th:text= ${materia.nombre}></td>
+                    <td th:text= ${materia.dias}></td>
+                    <td th:text= ${materia.credito}></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${materias == null or materias.empty}">
+            No hay materias
+        </div>
+    </body>
+</html>

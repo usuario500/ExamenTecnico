@@ -1,8 +1,10 @@
 package com.example.servicio;
 
 import com.example.dao.AlumnoDao;
+import com.example.dao.CargaDao;
 import com.example.dao.MateriaDao;
 import com.example.domain.Alumno;
+import com.example.domain.Carga;
 import com.example.domain.Materia;
 import java.util.List;
 //import com.example.domain.Alumno;
@@ -15,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Data
 @Service
-public class Modelo implements AlumnoServicios, MateriaServicios{
+ public class Modelo implements AlumnoServicios, MateriaServicios, CargaServicios{
     
     @Autowired
     private AlumnoDao alumnoDao;
@@ -24,6 +26,9 @@ public class Modelo implements AlumnoServicios, MateriaServicios{
     @Autowired
     private MateriaDao materiaDao;
     
+    
+    @Autowired
+    private CargaDao cargaDao;
     
     
     //Servicios para Alumnos
@@ -61,6 +66,33 @@ public class Modelo implements AlumnoServicios, MateriaServicios{
     public Materia MateriaF(Materia materia) {
         return materiaDao.findById(materia.getId()).orElse(null);
     }
+    
+    //SErvicios de Carga
+
+    @Override
+    public List<Carga> ObtenerCarga(Alumno alumno) {
+        int aux = alumno.getNC().intValue();
+        return (List<Carga>) cargaDao.buscarCarga(aux);
+    }
+    
+    @Override
+    public List<Materia> ObtenerMateriasCarga(Alumno alumno) {
+        Long aux = alumno.getNC();
+        return (List<Materia>) materiaDao.obtenerMateriasSinCargas(aux);
+    }
+
+    @Override
+    public void GuardarCarga(Carga carga) {
+        cargaDao.save(carga);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void EliminarCarga(Carga carga) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
     
     
 }
