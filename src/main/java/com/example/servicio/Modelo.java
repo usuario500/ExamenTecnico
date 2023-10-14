@@ -80,17 +80,29 @@ import org.springframework.transaction.annotation.Transactional;
         Long aux = alumno.getNC();
         return (List<Materia>) materiaDao.obtenerMateriasSinCargas(aux);
     }
+    
+    @Override
+    public List<Materia> obtenerMateriasCargadas(Alumno alumno) {
+        Long aux = alumno.getNC();
+        return (List<Materia>) materiaDao.obtenerMateriasCargadas(aux);
+    }
 
     @Override
     public void GuardarCarga(Carga carga) {
         cargaDao.save(carga);
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+     @Override
+    public Carga CargaF(Carga carga) {
+        return cargaDao.findById(carga.getId()).orElse(null);
     }
 
     @Override
     public void EliminarCarga(Carga carga) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         cargaDao.delete(carga);
     }
+
+    
 
     
     

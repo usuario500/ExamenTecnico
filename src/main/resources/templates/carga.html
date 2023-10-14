@@ -2,24 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Carga</title>
+        <title>Materias cargadas del almuno</title>
         <meta charset="UTF-8">
     </head>
     <body>
-        <h1>Datos del alumno</h1>
+        <h1>Materias Cargadas del alumno</h1>
         <a th:href="@{/}">Inicio</a>
         <br/>
         <div th:if="${cargas != null and !cargas.empty}">
             <table border="2">
                 <tr>
-                    <th>NC</th>
                     <th>Materia</th>
-                    <th>Horario</th>                    
+                    <th>Horario</th>
+                    <th>Accion</th>                    
                 </tr>
                 <tr th:each="carga : ${cargas}">
-                    <td th:text= ${carga.NC}></td>
-                    <td th:text= ${carga.id_materia}></td>
+                    <td>
+                        <span th:each="materia : ${materias}">
+                            <span th:if="${carga.id_materia == materia.id}">
+                                <span th:text="${materia.nombre}"></span>
+                            </span>
+                        </span>
+                    </td>
                     <td th:text= ${carga.horario}></td>
+                    <td >
+                        <a th:href="@{/showModificarCarga/} + ${carga.id}" ><button th:text="Modificar" ></button></a>
+                        <a th:href="@{/eliminarCarga/} + ${carga.id}" ><button th:text="Eliminar" ></button></a>
+                    </td>
                 </tr>
             </table>
         </div>

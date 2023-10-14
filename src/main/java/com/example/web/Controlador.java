@@ -63,6 +63,7 @@ public class Controlador {
     
     @PostMapping("/guardar")
     public String GuardarAlumno(Alumno alumno) {
+        alumno.setActivo(1);
         modelo.GuardarAlumno(alumno);
         return "redirect:/";
     }
@@ -103,24 +104,60 @@ public class Controlador {
     public String MostrarCarga(Alumno alumno, Model model) {
 
         List<Carga> cargas = modelo.ObtenerCarga(alumno);
-        
+        List<Materia> materias = modelo.obtenerMateriasCargadas(alumno);
         log.info("Se intensa obtener la carga");
-        log.info("Contenido de miObjeto: {}", cargas);
+        log.info("Contenido de miObjeto: {}", materias);
         model.addAttribute("cargas", cargas);
+        model.addAttribute("materias", materias);
 
         return "carga";
     }
     
     @GetMapping("/showCargar/{NC}")
-    public String ObtenerMateriasCarga(Alumno alumno, Model model) {
+    public String ObtenerMateriasCarga(Alumno alumno, Carga carga, Model model) {
 
+        carga.setId(null);
         List<Materia> materias = modelo.ObtenerMateriasCarga(alumno);
-        
+        alumno = modelo.AlumnoF(alumno);
         log.info("Se intensa obtener la carga");
         log.info("Contenido de miObjeto: {}", materias);
         model.addAttribute("materias", materias);
-
+        model.addAttribute("alumno", alumno);
+        model.addAttribute("carga", carga);
         return "cargar";
+    }
+    
+    @GetMapping("/showModificarCarga/{id}")
+    public String modificarCarga(Alumno alumno, Carga carga, Model model) {
+        
+        carga = modelo.CargaF(carga);
+        int aux = carga.getNC();
+        Long Aux = Long.valueOf(aux);
+        alumno.setNC(Aux);
+        List<Materia> materias = modelo.ObtenerMateriasCarga(alumno);
+        alumno = modelo.AlumnoF(alumno);
+        log.info("Se intensa obtener la carga");
+        log.info("Contenido de miObjeto: {}", materias);
+        model.addAttribute("materias", materias);
+        model.addAttribute("alumno", alumno);
+        model.addAttribute("carga", carga);
+        return "cargar";
+    }
+    
+    @GetMapping("/eliminarCarga/{id}")
+    public String EliminarCarga(Carga carga, Model model) {
+        carga = modelo.CargaF(carga);
+        log.info("Contenido de miObjeto: {}", carga);
+        String ruta = "/showCarga/" + carga.getNC();
+        modelo.EliminarCarga(carga);
+        return "redirect:" + ruta;
+    }
+    
+    @PostMapping("/guardarCarga")
+    public String GuardarMateriaCargada(Carga carga) {
+        log.info("Contenido de miObjeto: {}", carga);
+        modelo.GuardarCarga(carga);
+        return "redirect:/showCargar/" + carga.getNC();
     }
     
     

@@ -10,7 +10,11 @@ public interface CargaServicios {
     
     public void GuardarCarga(Carga carga);
     
+    public Carga CargaF(Carga carga);
+    
     public void EliminarCarga(Carga carga);
+    
+    
     
     
 }

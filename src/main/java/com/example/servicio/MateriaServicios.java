@@ -14,4 +14,6 @@ public interface MateriaServicios {
     
     public List<Materia> ObtenerMateriasCarga(Alumno alumno);
     
+    public List<Materia> obtenerMateriasCargadas(Alumno alumno);
+    
 }

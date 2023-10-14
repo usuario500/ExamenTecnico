@@ -10,7 +10,6 @@
         <a th:href="@{/}">Inicio</a>
         <br/>
         <form th:action="@{/guardar}" method="post" th:object="${alumno}">
-            <input type="hidden" name="activo" th:field="*{activo}" value="1" required/>
             <div th:if="${alumno.NC == null}"> 
                 <label for="NC">Numero de Control: </label>
                <input type="text" name="NC" th:field="*{NC}" required/>

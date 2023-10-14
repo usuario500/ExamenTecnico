@@ -6,22 +6,33 @@
         <meta charset="UTF-8">
     </head>
     <body>
+        <h1>Materias que el alumno podra cargar</h1>
+        <a th:href="@{/}">Inicio</a>
+        <br/>
         <div th:if="${materias != null and !materias.empty}">
-            <table border="2">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Dias</th>
-                    <th>Credito</th>
-                </tr>
-                <tr th:each="materia : ${materias}" th:if="${materia.activo == 1}" >
-                    <td th:text= ${materia.nombre}></td>
-                    <td th:text= ${materia.dias}></td>
-                    <td th:text= ${materia.credito}></td>
-                </tr>
-            </table>
+            <form th:action="@{/guardarCarga}" method="post" th:object="${carga}">
+                <input type="hidden" name="id" th:field="*{id}"/>
+                <label for="nombre" th:text="${alumno.nombres}"> </label>
+                <label for="apellido" th:text="${alumno.apellidos}"></label>
+                <input type="hidden" name="NC" th:field="*{NC}" th:value="${alumno.NC}" required readonly/>
+                <br />
+                
+                <label for="nombreM">Materia: </label>
+                <select name="id_materia" th:field="*{id_materia}" >
+                    <option th:if="${carga.id != null}" th:value="${carga.id_materia}" >La maeria actual</option>
+                    <option th:each="materia : ${materias}" th:value="${materia.id}" th:text="${materia.nombre}"></option>
+                </select>
+                <br />
+                
+                <label for="horario">Horario: </label>
+                <input type="datetime" name="horario" th:field="*{horario}" required oninput="this.value = this.value.replace(/[^0-9:-]/g, '');" maxlength="11" />
+                <br />
+
+                <input type="submit" name="guardar" value="Guardar" />
+            </form>
         </div>
         <div th:if="${materias == null or materias.empty}">
-            No hay materias
+            No hay materias para cargar
         </div>
     </body>
 </html>
