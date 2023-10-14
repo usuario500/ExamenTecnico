@@ -29,7 +29,7 @@
             <br/>
 
             <label for="credito">Creditos: </label>
-            <input type="number" name="credito" th:field="*{credito}" required oninput="this.value = this.value.replace(/[^0-9]/g, '');" maxlength="2"/>
+            <input type="number" name="credito" th:field="*{credito}" required oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
             <br/>
 
             <input type="submit" name="guardar" value="Guardar"/>
