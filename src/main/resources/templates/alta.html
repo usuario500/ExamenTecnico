@@ -4,10 +4,11 @@
     <head>
         <title>Datos del alumno</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
     </head>
     <body>
-        <h1>Datos del alumno</h1>
-        <a th:href="@{/}">Inicio</a>
+        <header th:replace="Plantilla/encabezado :: encabezado"></header>
+        <h2 class="bajoH">Datos del alumno</h2>
         <br/>
         <form th:action="@{/guardar}" method="post" th:object="${alumno}">
             <div th:if="${alumno.NC == null}"> 

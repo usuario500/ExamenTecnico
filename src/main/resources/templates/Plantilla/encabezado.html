@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>PlantillaTh</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+    </head>
+    <body>
+        <header class="top" th:fragment="encabezado">
+            <h1>Sistemas de altas y cargas</h1>
+            <a th:href="@{/}"><button th:text="Inicio"></button></a>
+
+            <a th:href="@{showAlta}"><button>Alta de alumnos</button></a>
+
+            <a th:href="@{showMateria}"><button>Alta de materias</button></a>
+
+        </header >
+
+        <footer class="bottom" th:fragment="piePag">
+            <h3>Todos los derechos reservados a Coppel S.A de C.V. Examen practico del postulante Alejandro Matin Melendrez Amador a programador JR</h3>
+        </footer>
+    </body>
+</html>

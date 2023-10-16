@@ -1,0 +1,25 @@
+.top{
+    background-color: darkblue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    color: white;
+}
+
+.bajoH{
+    padding-top: 90px;
+}
+
+.bottom{
+    position: relative;
+    bottom: -19px;
+    left: -8px;
+    width: 1349px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+

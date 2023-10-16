@@ -4,10 +4,11 @@
     <head>
         <title>Carga</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
     </head>
     <body>
-        <h1>Materias que el alumno podra cargar</h1>
-        <a th:href="@{/}">Inicio</a>
+        <header th:replace="Plantilla/encabezado :: encabezado"></header>
+        <h2 class="bajoH">Materias que el alumno podra cargar</h2>
         <br/>
         <div th:if="${materias != null and !materias.empty}">
             <form th:action="@{/guardarCarga}" method="post" th:object="${carga}">

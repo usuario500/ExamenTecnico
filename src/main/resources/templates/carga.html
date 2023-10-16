@@ -4,10 +4,11 @@
     <head>
         <title>Materias cargadas del almuno</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
     </head>
     <body>
-        <h1>Materias Cargadas del alumno</h1>
-        <a th:href="@{/}">Inicio</a>
+        <header th:replace="Plantilla/encabezado :: encabezado"></header>
+        <h2 class="bajoH">Materias Cargadas del alumno</h2>
         <br/>
         <div th:if="${cargas != null and !cargas.empty}">
             <table border="2">

@@ -4,11 +4,11 @@
     <head>
         <title>Carga de materias</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
     </head>
-    <body>
-        <h1>Inicio</h1>
-        <a th:href="@{showAlta}">Alta de alumnos</a>
-        <br/>
+    <body >
+        <header th:replace="Plantilla/encabezado :: encabezado"></header>
+         <h2 class="bajoH">Alumnos</h2>
         <div th:if="${alumnos != null and !alumnos.empty}">
             <table border="2">
                 <tr>
@@ -42,8 +42,7 @@
         </div>
         <br/>
 
-
-        <a th:href="@{showMateria}">Alta de materias</a>
+        <h2>Materias</h2>
         <div th:if="${materias != null and !materias.empty}">
             <table border="2">
                 <tr>
@@ -66,5 +65,7 @@
         <div th:if="${materias == null or materias.empty}">
             No hay materias
         </div>
+        <footer th:replace="Plantilla/encabezado :: piePag"></footer>
     </body>
+    
 </html>

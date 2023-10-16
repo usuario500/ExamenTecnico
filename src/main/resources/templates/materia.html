@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Datos del alumno</title>
+        <title>Datos de la materia</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
     </head>
     <body>
-        <h1>Datos de la materia</h1>
-        <a th:href="@{/}">Inicio</a>
+        <header th:replace="Plantilla/encabezado :: encabezado"></header>
+        <h2 class="bajoH">Datos de la materia</h2>
         <br/>
         <form th:action="@{/guardarMateria}" method="post" th:object="${materia}">
 
